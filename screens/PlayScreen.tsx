@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, Pressable } from "react-native";
 import StyleGuide from "../StyleGuide";
 
 const BALL_SIZE = 60;
@@ -32,10 +32,14 @@ const styles = StyleSheet.create({
 
 const PlayScreen = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.ball}></View>
-    </View>
+    <Pressable style={styles.container}>
+      <Pressable style={styles.ball} onPressOut={onLeaveHomeButton}></Pressable>
+    </Pressable>
   );
+
+  function onLeaveHomeButton() {
+    console.log("Left home");
+  }
 };
 
 export default PlayScreen;
