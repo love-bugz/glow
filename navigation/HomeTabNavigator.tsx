@@ -13,7 +13,7 @@ import PlayScreen from "../screens/PlayScreen";
 
 import StyleGuide from "../StyleGuide";
 
-const headerTitle = (title: string) => (
+const HeaderTitle = (title: string) => (
   <Text
     style={{ fontSize: 24, fontWeight: "400", color: StyleGuide.colors.text }}
   >
@@ -40,7 +40,7 @@ function FriendsStackNavigator() {
         name="FriendsList"
         component={FriendsListScreen}
         options={{
-          headerTitle: () => headerTitle("Friends List"),
+          headerTitle: () => HeaderTitle("Friends List"),
           ...headerOptions,
         }}
       />
