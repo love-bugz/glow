@@ -18,10 +18,14 @@ const RootStack = createStackNavigator<RootStackParamList>();
 function AppNavigator() {
   return (
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName="AuthLoading">
+      <RootStack.Navigator initialRouteName="AuthLoading" headerMode="none">
         <RootStack.Screen name="AuthLoading" component={AuthLoadingScreen} />
         <RootStack.Screen name="Auth" component={AuthStackNavigator} />
-        <RootStack.Screen name="Home" component={HomeTabNavigator} />
+        <RootStack.Screen
+          name="Home"
+          component={HomeTabNavigator}
+          options={{ headerShown: false }}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   );

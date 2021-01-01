@@ -1,16 +1,42 @@
 import React from "react";
-
+import { Text } from "react-native";
 // Navigation
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, Header } from "@react-navigation/stack";
 
 // Navigation Types
 import { HomeTabsParamList, FriendsStackParamList } from "../types";
 
 // Screen Components
 import FriendsListScreen from "../screens/FriendsListScreen";
-import Play from "../screens/PlayScreen";
 import PlayScreen from "../screens/PlayScreen";
+
+import StyleGuide from "../StyleGuide";
+
+const headerTitle = (title: string) => (
+  <Text
+    style={{ fontSize: 24, fontWeight: "400", color: StyleGuide.colors.text }}
+  >
+    {title}
+  </Text>
+);
+
+const headerOptions = {
+  headerTitleAlign: "center",
+  headerStyle: {
+    backgroundColor: StyleGuide.colors.background2,
+    paddingTop: 10,
+    height: 100,
+    shadowColor: StyleGuide.colors.background4,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+};
 
 // Create Stack Navigator
 const FriendsStack = createStackNavigator<FriendsStackParamList>();
@@ -18,7 +44,14 @@ const FriendsStack = createStackNavigator<FriendsStackParamList>();
 function FriendsStackNavigator() {
   return (
     <FriendsStack.Navigator initialRouteName="FriendsList">
-      <FriendsStack.Screen name="FriendsList" component={FriendsListScreen} />
+      <FriendsStack.Screen
+        name="FriendsList"
+        component={FriendsListScreen}
+        options={{
+          headerTitle: headerTitle("Friend's List"),
+          ...headerOptions,
+        }}
+      />
     </FriendsStack.Navigator>
   );
 }
