@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     width: width - 40,
-    backgroundColor: StyleGuide.colors.background2,
+    backgroundColor: StyleGuide.colors.background3,
     borderRadius: 4,
     marginTop: 16,
     marginBottom: 16,
@@ -29,27 +29,27 @@ const styles = StyleSheet.create({
   friendContainer: {
     width,
     borderBottomWidth: 1,
-    borderBottomColor: StyleGuide.colors.text3,
-    paddingTop: 16,
+    borderBottomColor: StyleGuide.colors.text4,
+    paddingTop: 24,
   },
   friend: {
     paddingLeft: 16,
-    marginBottom: 5,
+    marginBottom: 8,
     fontSize: 16,
-    color: StyleGuide.colors.text,
+    color: StyleGuide.colors.text2,
   },
   addBtn: {
-    height: 60,
-    width: 60,
-    borderRadius: 60 / 2,
+    height: 50,
+    width: 50,
+    borderRadius: 50 / 2,
     backgroundColor: StyleGuide.colors.teal,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 16,
   },
   addBtnTxt: {
-    fontSize: 50,
-    fontWeight: "500",
+    fontSize: 40,
+    fontWeight: "400",
   },
 });
 

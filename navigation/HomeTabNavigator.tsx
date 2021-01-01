@@ -25,16 +25,8 @@ const headerOptions = {
   headerTitleAlign: "center",
   headerStyle: {
     backgroundColor: StyleGuide.colors.background2,
-    paddingTop: 10,
     height: 100,
     shadowColor: StyleGuide.colors.background4,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 1,
   },
 };
 
@@ -48,7 +40,7 @@ function FriendsStackNavigator() {
         name="FriendsList"
         component={FriendsListScreen}
         options={{
-          headerTitle: headerTitle("Friend's List"),
+          headerTitle: () => headerTitle("Friends List"),
           ...headerOptions,
         }}
       />
@@ -56,14 +48,52 @@ function FriendsStackNavigator() {
   );
 }
 
+interface TabLabelProps {
+  title: string;
+  focused: boolean;
+}
+
+const TabLabel = ({ title, focused }: TabLabelProps) => (
+  <Text
+    style={{
+      fontSize: 18,
+      fontFamily: "Permanent-Marker",
+      color: focused ? StyleGuide.colors.text2 : StyleGuide.colors.text4,
+    }}
+  >
+    {title}
+  </Text>
+);
+
 // Create Bottom Tab Navigator
 const HomeTabs = createBottomTabNavigator<HomeTabsParamList>();
 
 function HomeTabNavigator() {
   return (
-    <HomeTabs.Navigator initialRouteName="Friends">
-      <HomeTabs.Screen name="Friends" component={FriendsStackNavigator} />
-      <HomeTabs.Screen name="Play" component={PlayScreen} />
+    <HomeTabs.Navigator
+      initialRouteName="Friends"
+      tabBarOptions={{
+        activeTintColor: StyleGuide.colors.text,
+        style: {
+          backgroundColor: StyleGuide.colors.background2,
+          borderTopWidth: 0,
+        },
+      }}
+    >
+      <HomeTabs.Screen
+        name="Friends"
+        component={FriendsStackNavigator}
+        options={{
+          tabBarLabel: ({ focused }) => TabLabel({ title: "Friends", focused }),
+        }}
+      />
+      <HomeTabs.Screen
+        name="Play"
+        component={PlayScreen}
+        options={{
+          tabBarLabel: ({ focused }) => TabLabel({ title: "Play", focused }),
+        }}
+      />
     </HomeTabs.Navigator>
   );
 }
