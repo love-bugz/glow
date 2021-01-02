@@ -1,18 +1,28 @@
-import React from "react";
-import { StyleSheet, Pressable } from "react-native";
+import React, { SyntheticEvent } from "react";
+import { StyleSheet, Pressable, Dimensions, View } from "react-native";
 import StyleGuide from "../StyleGuide";
 
+const { height, width } = Dimensions.get("window");
+
 const BALL_SIZE = 60;
-const TEAL = "#03DAC6";
+const TEAL = StyleGuide.colors.teal;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: StyleGuide.colors.background,
     alignItems: "center",
+    paddingTop: 100,
+  },
+  gameContainer: {
+    height: height - 100,
+    width: width - 24,
   },
   ball: {
-    margin: BALL_SIZE,
+    transform: [
+      { translateY: 644 - BALL_SIZE },
+      { translateX: 366 - BALL_SIZE },
+    ],
     height: BALL_SIZE,
     width: BALL_SIZE,
     borderRadius: BALL_SIZE / 2,
@@ -31,9 +41,16 @@ const styles = StyleSheet.create({
 });
 
 const PlayScreen = () => {
+  console.log("WIDTH:", width - 24);
+  console.log("HEIGHT: ", height - 200);
   return (
     <Pressable style={styles.container}>
-      <Pressable style={styles.ball} onPressOut={onLeaveHomeButton}></Pressable>
+      <View style={styles.gameContainer}>
+        <Pressable
+          style={styles.ball}
+          onPressOut={onLeaveHomeButton}
+        ></Pressable>
+      </View>
     </Pressable>
   );
 

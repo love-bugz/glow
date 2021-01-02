@@ -1,8 +1,11 @@
 import React from "react";
-import { Text } from "react-native";
+
+// Custom Components
+import { HeaderTitle, headerOptions, TabLabel } from "./components";
+
 // Navigation
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator, Header } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 
 // Navigation Types
 import { HomeTabsParamList, FriendsStackParamList } from "../types";
@@ -11,24 +14,8 @@ import { HomeTabsParamList, FriendsStackParamList } from "../types";
 import FriendsListScreen from "../screens/FriendsListScreen";
 import PlayScreen from "../screens/PlayScreen";
 
+// Styling
 import StyleGuide from "../StyleGuide";
-
-const HeaderTitle = (title: string) => (
-  <Text
-    style={{ fontSize: 24, fontWeight: "400", color: StyleGuide.colors.text }}
-  >
-    {title}
-  </Text>
-);
-
-const headerOptions = {
-  headerTitleAlign: "center",
-  headerStyle: {
-    backgroundColor: StyleGuide.colors.background2,
-    height: 100,
-    shadowColor: StyleGuide.colors.background4,
-  },
-};
 
 // Create Stack Navigator
 const FriendsStack = createStackNavigator<FriendsStackParamList>();
@@ -40,30 +27,13 @@ function FriendsStackNavigator() {
         name="FriendsList"
         component={FriendsListScreen}
         options={{
-          headerTitle: () => HeaderTitle("Friends List"),
+          headerTitle: () => HeaderTitle({ title: "Friends List" }),
           ...headerOptions,
         }}
       />
     </FriendsStack.Navigator>
   );
 }
-
-interface TabLabelProps {
-  title: string;
-  focused: boolean;
-}
-
-const TabLabel = ({ title, focused }: TabLabelProps) => (
-  <Text
-    style={{
-      fontSize: 18,
-      fontFamily: "Permanent-Marker",
-      color: focused ? StyleGuide.colors.text2 : StyleGuide.colors.text4,
-    }}
-  >
-    {title}
-  </Text>
-);
 
 // Create Bottom Tab Navigator
 const HomeTabs = createBottomTabNavigator<HomeTabsParamList>();

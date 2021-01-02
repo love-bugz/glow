@@ -19,8 +19,16 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <RootStack.Navigator initialRouteName="AuthLoading" headerMode="none">
-        <RootStack.Screen name="AuthLoading" component={AuthLoadingScreen} />
-        <RootStack.Screen name="Auth" component={AuthStackNavigator} />
+        <RootStack.Screen
+          name="AuthLoading"
+          component={AuthLoadingScreen}
+          options={{ headerShown: false }}
+        />
+        <RootStack.Screen
+          name="Auth"
+          component={AuthStackNavigator}
+          options={{ headerShown: false }}
+        />
         <RootStack.Screen
           name="Home"
           component={HomeTabNavigator}

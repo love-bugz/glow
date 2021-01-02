@@ -5,6 +5,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 // Navigation Types
 import { AuthStackParamList } from "../types";
+
+// Screen Components
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 
